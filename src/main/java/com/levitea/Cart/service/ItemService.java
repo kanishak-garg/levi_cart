@@ -16,4 +16,19 @@ public class ItemService {
     public Item getItemById(int id) {
         return itemDAL.getById(id);
     }
+
+    @Transactional
+    public void save(Item item) {
+        itemDAL.save(item);
+    }
+
+    @Transactional
+    public void delete(int id) {
+        itemDAL.delete(id);
+    }
+
+    @Transactional
+    public void update(Item updateItem) {
+        itemDAL.update(updateItem);
+    }
 }

@@ -3,10 +3,7 @@ package com.levitea.Cart.controller;
 import com.levitea.Cart.entity.Item;
 import com.levitea.Cart.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/item")
@@ -18,7 +15,22 @@ public class ItemController {
 
     @GetMapping("/id/{id}")
     public Item getItemById(@PathVariable int id){
-        itemService.getItemById(id);
+        return itemService.getItemById(id);
+    }
+
+    @PostMapping
+    public void saveItem(@RequestBody Item item){
+        itemService.save(item);
+    }
+
+    @DeleteMapping("/delete/id/{id}")
+    public void deleteitemByid(@PathVariable int id){
+        itemService.delete(id);
+    }
+
+    @PutMapping("/update")
+    public void UpdateItem(@RequestBody Item updateItem){
+        itemService.update(updateItem);
     }
 
 }

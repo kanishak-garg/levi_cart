@@ -1,16 +1,21 @@
 package com.levitea.Cart.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private int id;
-
+    @Column
     private String name;
+    @Column
+    private String description;
+
+    @OneToOne
+    private ItemDetails itemDetails;
 
     public int getId() {
         return id;
@@ -36,5 +41,13 @@ public class Item {
         this.description = description;
     }
 
-    private String description;
+    public ItemDetails getItemDetails() {
+        return itemDetails;
+    }
+
+    public void setItemDetails(ItemDetails itemDetails) {
+        this.itemDetails = itemDetails;
+    }
+
+
 }

@@ -19,4 +19,27 @@ public class ItemDALImpl implements ItemDAL {
         Item item = session.get(Item.class, id);
         return item;
     }
+
+    @Override
+    public void save(Item item) {
+        Session session = entityManager.unwrap(Session.class);
+        session.persist(item);
+    }
+
+    @Override
+    public void delete(int id) {
+        Session session = entityManager.unwrap(Session.class);
+        Item item = session.get(Item.class, id);
+        session.remove(item);
+    }
+
+    @Override
+    public void update(Item updateItem) {
+        Session session = entityManager.unwrap(Session.class);
+        Item item = session.get(Item.class, updateItem.getId());
+        item.setDescription(updateItem.getDescription());
+        item.setName(updateItem.getName());
+        session.update(item);
+    }
+
 }

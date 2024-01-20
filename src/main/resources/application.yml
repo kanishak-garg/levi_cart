@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/Levi_cart"
+    username: "postgres"
+    password: "0000"
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate-dialect: org.hibernate.dialect.PostgreSQLDialect
+
+#
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.datasource.url=jdbc:postgresql://localhost:5432/Levi_cart
+#spring.datasource.username=postgres
+#spring.datasource.password=0000
