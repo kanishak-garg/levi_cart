@@ -6,7 +6,9 @@ import com.levitea.Cart.entity.ItemReview;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ItemReviewDALImpl implements ItemReviewDAL {
     @Autowired
     EntityManager entityManager;
