@@ -1,4 +1,7 @@
 package com.levitea.Cart.dal;
 
-public class ItemReviewDAL {
+import com.levitea.Cart.entity.ItemReview;
+
+public interface ItemReviewDAL {
+    public void save(ItemReview itemReview);
 }
