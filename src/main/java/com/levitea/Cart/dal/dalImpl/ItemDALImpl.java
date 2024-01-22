@@ -23,7 +23,7 @@ public class ItemDALImpl implements ItemDAL {
     @Override
     public void save(Item item) {
         Session session = entityManager.unwrap(Session.class);
-        session.persist(item);
+        session.save(item);
     }
 
     @Override

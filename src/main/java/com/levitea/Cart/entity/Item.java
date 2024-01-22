@@ -2,6 +2,8 @@ package com.levitea.Cart.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Item {
 
@@ -14,8 +16,19 @@ public class Item {
     @Column
     private String description;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ItemDetails itemDetails;
+
+    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
+    private List<ItemReview> itemReview;
+
+    public List<ItemReview> getItemReview() {
+        return itemReview;
+    }
+
+    public void setItemReview(List<ItemReview> itemReview) {
+        this.itemReview = itemReview;
+    }
 
     public int getId() {
         return id;
