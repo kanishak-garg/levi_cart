@@ -1,5 +1,6 @@
 package com.levitea.Cart.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,16 +12,18 @@ public class ItemReview {
     private String reviewerName;
     private String review;
 
-//    @ManyToOne
-//    private Item item;
-//
-//    public Item getItem() {
-//        return item;
-//    }
-//
-//    public void setItem(Item item) {
-//        this.item = item;
-//    }
+    @ManyToOne
+    @JoinColumn(name="item_id")
+    @JsonBackReference
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     public int getId() {
         return id;

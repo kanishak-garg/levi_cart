@@ -1,5 +1,6 @@
 package com.levitea.Cart.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -19,8 +20,8 @@ public class Item {
     @OneToOne(cascade = CascadeType.ALL)
     private ItemDetails itemDetails;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_id")
+    @OneToMany(mappedBy="item",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ItemReview> itemReview;
 
     public List<ItemReview> getItemReview() {
