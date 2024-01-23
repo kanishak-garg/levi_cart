@@ -11,17 +11,16 @@ public class ItemReview {
     private String reviewerName;
     private String review;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_id")
-    private Item item;
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
+//    @ManyToOne
+//    private Item item;
+//
+//    public Item getItem() {
+//        return item;
+//    }
+//
+//    public void setItem(Item item) {
+//        this.item = item;
+//    }
 
     public int getId() {
         return id;

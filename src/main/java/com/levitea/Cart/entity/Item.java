@@ -19,7 +19,8 @@ public class Item {
     @OneToOne(cascade = CascadeType.ALL)
     private ItemDetails itemDetails;
 
-    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_id")
     private List<ItemReview> itemReview;
 
     public List<ItemReview> getItemReview() {
