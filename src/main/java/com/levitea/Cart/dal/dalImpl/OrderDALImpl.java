@@ -2,7 +2,6 @@ package com.levitea.Cart.dal.dalImpl;
 
 import com.levitea.Cart.dal.OrderDAL;
 import com.levitea.Cart.entity.Order;
-import com.levitea.Cart.entity.Order;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -24,8 +24,8 @@ public class OrderController {
     }
 
     @DeleteMapping("/delete/id/{id}")
-    public void deleteorderByid(@PathVariable int id){
-        orderService.delete(id);
+    public String deleteorderByid(@PathVariable int id){
+        return orderService.delete(id);
     }
 
     @PutMapping("/update")
