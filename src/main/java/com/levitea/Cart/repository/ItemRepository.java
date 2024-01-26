@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends CrudRepository<Item,Integer> {
 
-    @Query(value = "SELECT * FROM item WHERE description LIKE :desc% LIMIT 4",nativeQuery = true)
+    @Query(value = "SELECT * FROM item WHERE description LIKE CONCAT(:desc%,'%') LIMIT 4",nativeQuery = true)
     List<Item> getItemByDesc(@Param("desc") String desc);
 }
