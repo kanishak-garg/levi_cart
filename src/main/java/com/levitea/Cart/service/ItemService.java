@@ -2,33 +2,39 @@ package com.levitea.Cart.service;
 
 import com.levitea.Cart.dal.ItemDAL;
 import com.levitea.Cart.entity.Item;
+import com.levitea.Cart.repository.ItemRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ItemService {
 
     @Autowired
-    ItemDAL itemDAL;
+    ItemRepository itemRepository;
 
-    @Transactional
     public Item getItemById(int id) {
-        return itemDAL.getById(id);
+        return itemRepository.findById(id).get();
     }
 
-    @Transactional
     public void save(Item item) {
-        itemDAL.save(item);
+        itemRepository.save(item);
     }
 
-    @Transactional
     public void delete(int id) {
-        itemDAL.delete(id);
+        itemRepository.deleteById(id);
     }
 
-    @Transactional
     public void update(Item updateItem) {
-        itemDAL.update(updateItem);
+        itemRepository.save(updateItem);
+    }
+
+    public List<Item> getAll() {
+        List<Item> itemList = new ArrayList<>();
+        itemRepository.findAll().forEach(item -> itemList.add(item));
+        return itemList;
     }
 }

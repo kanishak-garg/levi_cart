@@ -4,6 +4,8 @@ import com.levitea.Cart.dal.ItemDAL;
 import com.levitea.Cart.dal.OrderDAL;
 import com.levitea.Cart.entity.Item;
 import com.levitea.Cart.entity.Order;
+import com.levitea.Cart.repository.ItemRepository;
+import com.levitea.Cart.repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,37 +17,33 @@ import java.util.List;
 public class OrderService {
 
     @Autowired
-    OrderDAL orderDAL;
+    OrderRepository orderRepository;
 
     @Autowired
-    ItemDAL itemDAL;
+    ItemRepository itemRepository;
 
-    @Transactional
     public Order getOrderById(int id) {
-        return orderDAL.getById(id);
+        return orderRepository.findById(id).get();
     }
 
-    @Transactional
     public void save(Order order) {
         Order saveOrder = new Order();
         List<Item> itemList = new ArrayList<>();
         for(Item item: order.getItems()){
-            Item populatedItem = itemDAL.getById(item.getId());
+            Item populatedItem = itemRepository.findById(item.getId()).get();
             itemList.add(populatedItem);
         }
         saveOrder.setOrderType(order.getOrderType());
         saveOrder.setItems(itemList);
-        orderDAL.save(saveOrder);
+        orderRepository.save(saveOrder);
     }
 
-    @Transactional
     public String delete(int id) {
-        orderDAL.delete(id);
+        orderRepository.deleteById(id);
         return "order has been deleted with id: " + id;
     }
 
-    @Transactional
     public void update(Order updateOrder) {
-        orderDAL.update(updateOrder);
+        orderRepository.save(updateOrder);
     }
 }

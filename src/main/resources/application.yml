@@ -3,12 +3,12 @@ spring:
     url: "jdbc:postgresql://localhost:5432/Levi_cart"
     username: "postgres"
     password: "0000"
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
       show-sql: true
-      properties:
-        hibernate-dialect: org.hibernate.dialect.PostgreSQLDialect
+
 #logging:
 #  level:
 #    org.hibernate: trace

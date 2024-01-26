@@ -1,4 +1,7 @@
 package com.levitea.Cart.repository;
 
-public interface ItemReviewRepository {
+import com.levitea.Cart.entity.ItemReview;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ItemReviewRepository extends CrudRepository<ItemReview, Integer> {
 }
